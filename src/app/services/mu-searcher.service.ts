@@ -5,7 +5,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class MuSearcherService {
   private searchUrl: string;
-  private artistUrl: string;
+  private albumUrl: string;
 
   constructor(private _http: Http) { }
 
@@ -15,9 +15,9 @@ export class MuSearcherService {
       .map(res => res.json());
   }
 
-  getArtist(id:string) {
-    this.artistUrl = 'https://api.spotify.com/v1/artists/'+id;
-    return this._http.get(this.artistUrl)
+  getAlbums(artid: string) {
+    this.albumUrl = 'https://api.spotify.com/v1/albums/'+artid;
+    return this._http.get(this.albumUrl)
       .map(res => res.json());
   }
 }

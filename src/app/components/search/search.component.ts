@@ -1,19 +1,26 @@
 import { Component} from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
-import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 import { MuSearcherService } from '../../services/mu-searcher.service';
 import { Result } from '../../shared/result';
+import { Album } from '../../shared/result-album';
+
 
 @Component({
   moduleId: module.id,
   selector: 'app-search',
   templateUrl: 'search.component.html',
   styleUrls: ['search.component.css'],
-  providers: [HTTP_PROVIDERS, ROUTER_DIRECTIVES, MuSearcherService, Result]
+  providers: [HTTP_PROVIDERS, MuSearcherService],
+
 })
+
+
+
 export class SearchComponent{
   searchName: string;
   searchResult: Result[];
+  artist: Result;
+  albums: any[];
 
   constructor(private _muSearcher: MuSearcherService) { }
 
@@ -24,9 +31,19 @@ export class SearchComponent{
       });
   }
 
-  onClick(artist: Result[]) {
-    console.log(artist);
+  searchAlbum(id) {
+    this._muSearcher.getAlbums(id)
+      .subscribe(res => {
+        this.albums = res.albums.items;
+      });
+    console.log(this.albums);
+  }
+
+  onClick(artist: Result) {
+    this.artist = artist;
+    this.searchAlbum(this.artist.id);
   }
 
 
 }
+

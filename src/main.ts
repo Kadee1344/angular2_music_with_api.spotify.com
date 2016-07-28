@@ -10,5 +10,5 @@ if (environment.production) {
 
 bootstrap(AppComponent, [
   HTTP_PROVIDERS,
-  APP_ROUTES,
+  APP_ROUTES
 ]);
