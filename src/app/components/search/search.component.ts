@@ -31,17 +31,18 @@ export class SearchComponent{
       });
   }
 
-  searchAlbum(id) {
+  searchAlbums(id) {
     this._muSearcher.getAlbums(id)
       .subscribe(res => {
-        this.albums = res.albums.items;
+        this.albums = res.items;
       });
     console.log(this.albums);
+
   }
 
   onClick(artist: Result) {
     this.artist = artist;
-    this.searchAlbum(this.artist.id);
+    this.searchAlbums(this.artist.id);
   }
 
 

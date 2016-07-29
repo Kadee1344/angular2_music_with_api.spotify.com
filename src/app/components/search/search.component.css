@@ -1,4 +1,24 @@
+.album {
+  min-width:200px;
+  min-height: 200px;
+}
+.artist-info {
+  margin-left: 130px;
+}
+
+.search-res {
+  margin-left: 20px;
+}
+
 .artist-thumb {
   width: 100px;
   float: left;
+}
+
+.artist-albums {
+  margin-top: 100px;
+}
+
+.album-thumb {
+  width: 150px;
 }
